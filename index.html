@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code with Julkhair | 👋</title>
+    <link rel="icon" type="image/x-icon" href="./coding.png" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .markdown-body pre {
+        background-color: #f7f7f7;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .markdown-body {
+        transition: all 0.3s ease;
+      }
+      .toc a {
+        display: block;
+        padding: 4px 0px 4px 10px;
+        color: #fff;
+        text-transform: capitalize;
+        transition: all 0.2s ease;
+      }
+      .toc a:hover {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-sans w-full">
+    <!-- Mobile Toggle -->
+    <button
+      class="md:hidden absolute top-4 right-4 z-10 bg-gray-800 text-white px-3 py-2 rounded"
+      onclick="sidebar.classList.toggle('hidden')"
+    >
+      ☰
+    </button>
+
+    <div class="flex flex-col md:flex-row h-screen overflow-hidden">
+      <!-- Left Sidebar -->
+      <div
+        id="sidebar"
+        class="w-full md:w-[20%] hidden md:block bg-gray-800 text-white p-4 border-b md:border-b-0 md:border-r border-gray-700"
+      >
+        <h3 class="text-xl font-semibold mb-4">Markdown Files</h3>
+        <div id="fileList" class="space-y-2"></div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="flex overflow-hidden w-full">
+        <div
+          id="content"
+          class="markdown-body w-full p-6 overflow-y-auto flex-grow"
+        ></div>
+
+        <!-- TOC Sidebar, hidden on mobile -->
+        <div
+          id="toc"
+          class="hidden md:block w-1/2 p-3 overflow-y-auto border-gray-300 bg-gray-800 toc"
+        ></div>
+      </div>
+    </div>
+
+    <script>
+      const files = ["reading.md", "Basics of react.md"];
+      const fileList = document.getElementById("fileList");
+      const contentDiv = document.getElementById("content");
+      const sidebar = document.getElementById("sidebar");
+      const tocDiv = document.getElementById("toc");
+
+      let currentActive = null;
+
+      files.forEach((filename) => {
+        const item = document.createElement("div");
+        item.textContent = filename.split(".")[0];
+        item.className =
+          "cursor-pointer bg-gray-700 hover:bg-teal-500 px-4 py-2 rounded capitalize";
+        item.addEventListener("click", () => {
+          if (currentActive) {
+            currentActive.classList.remove(
+              "bg-teal-600",
+              "ring",
+              "ring-teal-300"
+            );
+            currentActive.classList.add("bg-gray-700");
+          }
+
+          item.classList.remove("bg-gray-700");
+          item.classList.add("bg-teal-600", "ring", "ring-teal-300");
+          currentActive = item;
+
+          loadMarkdown(filename);
+        });
+
+        fileList.appendChild(item);
+      });
+
+      function loadMarkdown(filename) {
+        fetch(`markdown/${filename}`)
+          .then((res) => {
+            if (!res.ok) throw new Error(`Failed to load ${filename}`);
+            return res.text();
+          })
+          .then((md) => {
+            const html = marked.parse(md);
+            contentDiv.innerHTML = html;
+            hljs.highlightAll();
+            generateTOC(); // Generate TOC after loading Markdown
+          })
+          .catch((err) => {
+            contentDiv.innerHTML = `<p class="text-red-500">${err.message}</p>`;
+            tocDiv.innerHTML = "";
+            tocDiv.classList.add("hidden"); // Hide TOC if file fails to load
+          });
+      }
+
+      let currentTOCActive = null;
+
+      function generateTOC() {
+        const headings = contentDiv.querySelectorAll("h1, h2, h3");
+
+        // If no headings found, hide TOC
+        if (headings.length === 0) {
+          tocDiv.classList.add("hidden");
+          return;
+        }
+
+        tocDiv.classList.remove("hidden");
+        tocDiv.innerHTML =
+          "<h2 class='text-lg font-semibold mb-2 text-white'>Table of Contents</h2>";
+
+        headings.forEach((heading, index) => {
+          const id = `heading-${index}`;
+          heading.id = id;
+
+          const link = document.createElement("a");
+          link.href = `#${id}`;
+          link.textContent = heading.textContent;
+          link.className = `pl-${
+            (parseInt(heading.tagName[1]) - 1) * 4
+          } text-sm cursor-pointer hover:bg-teal-500 p-4 rounded capitalize`;
+
+          link.addEventListener("click", (e) => {
+            if (currentTOCActive) {
+              currentTOCActive.classList.remove(
+                "bg-teal-600",
+                "ring",
+                "ring-teal-300",
+                "text-white"
+              );
+            }
+            link.classList.add("bg-teal-600", "ring", "ring-teal-300","text-white");
+            currentTOCActive = link;
+          });
+
+          tocDiv.appendChild(link);
+        });
+      }
+
+      // Responsive Sidebar Behavior
+      function handleResponsiveSidebar() {
+        if (window.innerWidth < 768) {
+          sidebar.classList.add("hidden");
+          tocDiv.classList.add("hidden"); // Hide TOC when on mobile
+        } else {
+          sidebar.classList.remove("hidden");
+          if (contentDiv.querySelectorAll("h1, h2, h3").length > 0) {
+            tocDiv.classList.remove("hidden"); // Show TOC if headings are present
+          }
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", handleResponsiveSidebar);
+      window.addEventListener("resize", handleResponsiveSidebar);
+    </script>
+  </body>
+</html>
