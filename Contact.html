@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | 📱</title>
+    <link rel="icon" type="image/x-icon" href="./coding.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .active {
+            width: 100%; /* Tailwind Green */
+            color: blue;
+            font-weight: bold;
+            border-radius: 12px;
+            border: 2px sold;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="bg-green-300 h-20 border-b border-gray-400">
+        <nav class="flex justify-between items-center p-4">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="./coding.png" alt="Coding" class="w-10 h-10">
+                <p class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent">Julkhair</p>
+            </a>
+            
+            <!-- Mobile menu button -->
+            <div class="sm:hidden flex items-center">
+                <button id="menu-toggle" class="text-xl">
+                    ☰
+                </button>
+            </div>
+
+            <!-- Desktop Navbar -->
+            <ul id="navbar" class="hidden sm:flex items-center gap-8 w-1/6">
+                <li><a href="index.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Home</a></li>
+                <li><a href="About.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">About</a></li>
+                <li><a href="Contact.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Contact</a></li>
+                <li><a href="Tutorials.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Tutorials</a></li>
+            </ul>
+
+            <!-- Mobile Navbar -->
+            <ul id="mobile-navbar" class="sm:hidden fixed inset-0 bg-green-300 bg-opacity-80 p-4 flex flex-col items-center gap-2 hidden">
+                <!-- Close Button -->
+                <div class="flex justify-end w-full">
+                    <button id="close-btn" class="text-3xl">×</button>
+                </div>
+                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="index.html" class="text-lg w-full block nav-item">Home</a></li>
+                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="About.html" class="text-lg w-full block nav-item">About</a></li>
+                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="Contact.html" class="text-lg w-full block nav-item">Contact</a></li>
+                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="Tutorials.html" class="text-lg w-full block nav-item">Tutorials</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section></section>
+
+    <footer>
+        <p>&copy; 2023 Code with Julkhair</p>
+    </footer>
+
+    <script>
+        // JavaScript for toggling mobile menu visibility
+        const menuButton = document.getElementById("menu-toggle");
+        const mobileNavbar = document.getElementById("mobile-navbar");
+        const closeButton = document.getElementById("close-btn");
+
+        // Show the mobile menu when the hamburger button is clicked
+        menuButton.addEventListener("click", () => {
+            mobileNavbar.classList.remove("hidden");
+        });
+
+        // Close the mobile menu when the close button is clicked
+        closeButton.addEventListener("click", () => {
+            mobileNavbar.classList.add("hidden");
+        });
+
+        // Set active class on current page in both desktop and mobile nav
+        function setActiveNav() {
+            const navLinks = document.querySelectorAll('.nav-item');
+            const currentPage = window.location.pathname.split('/').pop(); // Get the current page name from the URL
+
+            navLinks.forEach(link => {
+                if (link.href.includes(currentPage)) {
+                    link.classList.add('active'); // Add active class to the current page
+                } else {
+                    link.classList.remove('active'); // Remove active class from others
+                }
+            });
+        }
+
+        // Run the function to set active navigation link
+        setActiveNav();
+    </script>
+</body>
+</html>

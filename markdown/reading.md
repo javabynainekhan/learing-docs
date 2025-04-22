@@ -87,6 +87,13 @@ Example:
 ```jsx
 const [count, setCount] = useState(0);
 ```
+✅ State in React:
+
+`xState` is a built-in object in React that stores dynamic data for a component. When the state changes, the component re-renders to reflect those changes.
+
+✅ useState Hook:
+
+`useState` is a **React Hook** that lets you add state to functional components. It returns the current state value and a function to update it.
 
 ---
 
@@ -101,7 +108,11 @@ const [name, setName] = useState('John');
 ---
 
 ### 10. **What are props in React?**
-**Props** (short for properties) are read-only objects passed from a parent to a child component. They are used to pass data and event handlers.
+**Props** (short for properties) are read-only objects passed from a parent to a child component. They are used to pass data/any thing and event handlers.
+
+or
+
+**Props** (short for 'properties') are read-only inputs that are passed from one component to another in React. They allow data to flow from parent to child components. And Props are immutable.
 
 Example:
 ```jsx
@@ -118,10 +129,26 @@ Example:
 | Ownership     | Managed within the component     | Passed from parent to child        |
 | Usage         | For dynamic data                 | For component communication        |
 
+or
+
+| Feature       | **Props**                                | **State**                                  |
+|---------------|-------------------------------------------|---------------------------------------------|
+| **Definition** | Props are **read-only inputs** passed to a component | State is **data that changes** inside a component |
+| **Mutability** | **Immutable** (cannot be changed by the component) | **Mutable** (can be changed using `setState`) |
+| **Who sets it?** | **Parent component** | **Component itself** |
+| **Purpose** | Used to **pass data** from parent to child | Used to **manage dynamic data** within the component |
+| **Accessed by** | `props.propertyName` | `const [state, setState] = useState()` |
+| **Triggers re-render?** | Yes, if props change | Yes, when state changes |
+
+
 ---
 
 ### 12. **What is props drilling?**
 **Props drilling** is the process of passing props through multiple nested components, even if intermediate components don't use those props — just to get them to a deeply nested child.
+
+or
+
+**Prop drilling** is when you pass props through multiple levels of components just to reach a deeply nested child, which can make your code harder to manage.
 
 ---
 
@@ -136,10 +163,22 @@ Example:
 - Use **state management libraries** like Redux or Zustand
 - Refactor components to reduce depth
 
+or
+
+Prop drilling makes code harder to manage by forcing props through components that don't need them. We can avoid it using the React Context API or state management tools like Redux, which let us share data globally without passing it through each level.
+
 ---
 
 ### 14. **What is the Context in React?**
 **React Context API** provides a way to share values (like theme, user data) between components without explicitly passing props down the tree.
+
+or
+
+React Context lets us create global variables that can be accessed by any component, helping avoid prop drilling and making data sharing easier.
+
+or
+
+Context in React is a way to share data globally across components without having to pass props manually at every level.
 
 Example:
 ```jsx
