@@ -16,6 +16,7 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
       .markdown-body pre {
         background-color: #f7f7f7;
@@ -36,92 +37,162 @@
         color: #fff;
       }
       .active {
-            width: 100%; /* Tailwind Green */
-            color: blue;
-            font-weight: bold;
-            border-radius: 12px;
-            border: 2px sold;
-            padding: 10px;
-        }
+        width: 100%; /* Tailwind Green */
+        color: blue;
+        font-weight: bold;
+        border-radius: 12px;
+        border: 2px sold;
+        padding: 10px;
+      }
+      .nav-item {
+        padding: 0.5rem 1rem;
+        transition: color 0.3s;
+      }
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans w-full">
-    <header class="bg-green-300 h-20 border-b border-gray-400">
+    <header
+      class="shadow-lg isolate h-16 border-b bg-transparent ring-1 ring-black/5"
+    >
       <nav class="flex justify-between items-center p-4">
-          <a href="index.html" class="flex items-center gap-2">
-              <img src="./coding.png" alt="Coding" class="w-10 h-10">
-              <p class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent">Julkhair</p>
-          </a>
-          
-          <!-- Mobile menu button -->
-          <div class="sm:hidden flex items-center">
-              <button id="menu-toggle" class="text-xl">
-                  ☰
-              </button>
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="./coding.png" alt="Coding" class="w-10 h-10" />
+          <p
+            class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent"
+          >
+            Julkhair
+          </p>
+        </a>
+
+        <!-- Mobile menu button -->
+        <div class="sm:hidden flex items-center">
+          <button id="menu-toggle" class="text-xl">☰</button>
+        </div>
+
+        <!-- Desktop Navbar -->
+        <ul class="hidden sm:flex gap-6 items-center font-medium">
+          <li>
+            <a href="index.html" class="nav-item transition hover:text-blue-500"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="About.html" class="nav-item transition hover:text-blue-500"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="Contact.html"
+              class="nav-item transition hover:text-blue-500"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="Tutorials.html"
+              class="nav-item transition hover:text-blue-500"
+              >Tutorials</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile Navbar -->
+        <ul
+          id="mobile-navbar"
+          class="sm:hidden fixed inset-0 shadow-lg bg-white bg-opacity-90 ring-1 ring-black/5 isolate p-4 flex flex-col items-center gap-2 hidden"
+        >
+          <div class="flex justify-between gap-2 w-full">
+            <a href="index.html" class="flex items-center gap-2 w-full">
+              <img src="./coding.png" alt="Coding" class="w-10 h-10" />
+              <p
+                class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent"
+              >
+                Julkhair
+              </p>
+            </a>
+            <!-- Close Button -->
+            <div class="flex justify-end w-full">
+              <button id="close-btn" class="text-3xl">×</button>
+            </div>
           </div>
-
-          <!-- Desktop Navbar -->
-          <ul id="navbar" class="hidden sm:flex items-center gap-8 w-1/6">
-              <li><a href="index.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Home</a></li>
-              <li><a href="About.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">About</a></li>
-              <li><a href="Contact.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Contact</a></li>
-              <li><a href="Tutorials.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Tutorials</a></li>
-          </ul>
-
-          <!-- Mobile Navbar -->
-          <ul id="mobile-navbar" class="sm:hidden fixed inset-0 bg-green-300 bg-opacity-80 p-4 flex flex-col items-center gap-2 hidden">
-              <!-- Close Button -->
-              <div class="flex justify-end w-full">
-                  <button id="close-btn" class="text-3xl">×</button>
-              </div>
-              <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="index.html" class="text-lg w-full block nav-item">Home</a></li>
-              <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="About.html" class="text-lg w-full block nav-item">About</a></li>
-              <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="Contact.html" class="text-lg w-full block nav-item">Contact</a></li>
-              <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="Tutorials.html" class="text-lg w-full block nav-item">Tutorials</a></li>
-          </ul>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="index.html" class="text-lg w-full block nav-item">Home</a>
+          </li>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="About.html" class="text-lg w-full block nav-item">About</a>
+          </li>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="Contact.html" class="text-lg w-full block nav-item"
+              >Contact</a
+            >
+          </li>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="Tutorials.html" class="text-lg w-full block nav-item"
+              >Tutorials</a
+            >
+          </li>
+        </ul>
       </nav>
-  </header>
+    </header>
     <!-- Mobile Toggle -->
     <section>
-    <button
-      class="md:hidden absolute top-20 right-2 z-10 bg-gray-800 text-white px-3 py-2 rounded"
-      onclick="sidebar.classList.toggle('hidden')"
-    >
-      ☰
-    </button>
-
-    <div class="flex flex-col md:flex-row h-[calc(100vh-80px)] overflow-hidden">
-      <!-- Left Sidebar -->
-      <div
-        id="sidebar"
-        class="w-full md:w-[20%] hidden md:block bg-gray-800 text-white p-4 border-b md:border-b-0 md:border-r border-gray-700"
+      <button
+        id="mobile-sidebar-toggle"
+        class="md:hidden absolute top-20 right-2 z-10 bg-gray-800 text-white px-3 py-2 rounded"
+        onclick="sidebar.classList.toggle('hidden')"
       >
-        <h3 class="text-xl font-semibold mb-4">Markdown Files</h3>
-        <div id="fileList" class="space-y-2"></div>
-      </div>
+        ☰
+      </button>
 
-      <!-- Content Area -->
-      <div class="flex overflow-hidden w-full">
+      <div
+        class="flex flex-col md:flex-row h-[calc(100vh-64px)] overflow-hidden"
+      >
+        <!-- Left Sidebar -->
         <div
-          id="content"
-          class="markdown-body w-full p-6 overflow-y-auto flex-grow"
-        ></div>
+          id="sidebar"
+          class="w-full md:w-[20%] hidden md:block bg-gray-800 text-white p-4 border-b md:border-b-0 md:border-r border-gray-700"
+        >
+          <h3 class="text-xl font-semibold mb-4">Markdown Files</h3>
+          <div id="fileList" class="space-y-2"></div>
+        </div>
 
-        <!-- TOC Sidebar, hidden on mobile -->
-        <div
-          id="toc"
-          class="hidden md:block w-1/2 p-3 overflow-y-auto border-gray-300 bg-gray-800 toc"
-        ></div>
+        <!-- Content Area -->
+        <div class="flex overflow-hidden w-full">
+          <div
+            id="content"
+            class="markdown-body w-full p-6 overflow-y-auto flex-grow"
+          ></div>
+
+          <!-- TOC Sidebar, hidden on mobile -->
+          <div
+            id="toc"
+            class="hidden md:block w-1/2 p-3 overflow-y-auto border-gray-300 bg-gray-800 toc"
+          ></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
     <script>
       const files = ["reading.md", "Basics of react.md"];
+      const menuButton = document.getElementById("menu-toggle");
+      const mobileNavbar = document.getElementById("mobile-navbar");
+      const closeButton = document.getElementById("close-btn");
       const fileList = document.getElementById("fileList");
       const contentDiv = document.getElementById("content");
       const sidebar = document.getElementById("sidebar");
       const tocDiv = document.getElementById("toc");
+      const mobileSidebarToggle = document.getElementById(
+        "mobile-sidebar-toggle"
+      );
 
       let currentActive = null;
 
@@ -204,13 +275,47 @@
                 "text-white"
               );
             }
-            link.classList.add("bg-teal-600", "ring", "ring-teal-300","text-white");
+            link.classList.add(
+              "bg-teal-600",
+              "ring",
+              "ring-teal-300",
+              "text-white"
+            );
             currentTOCActive = link;
           });
 
           tocDiv.appendChild(link);
         });
       }
+
+      // Show the mobile menu when the hamburger button is clicked
+      menuButton.addEventListener("click", () => {
+        mobileNavbar.classList.remove("hidden");
+        mobileSidebarToggle.classList.add("hidden"); // Hides the ☰ sidebar toggle button
+      });
+
+      // Close the mobile menu when the close button is clicked
+      closeButton.addEventListener("click", () => {
+        mobileNavbar.classList.add("hidden");
+        mobileSidebarToggle.classList.remove("hidden"); // Shows the ☰ sidebar toggle button again
+      });
+
+      // Set active class on current page in both desktop and mobile nav
+      function setActiveNav() {
+        const navLinks = document.querySelectorAll(".nav-item");
+        const currentPage = window.location.pathname.split("/").pop(); // Get the current page name from the URL
+
+        navLinks.forEach((link) => {
+          if (link.href.includes(currentPage)) {
+            link.classList.add("active"); // Add active class to the current page
+          } else {
+            link.classList.remove("active"); // Remove active class from others
+          }
+        });
+      }
+
+      // Run the function to set active navigation link
+      setActiveNav();
 
       // Responsive Sidebar Behavior
       function handleResponsiveSidebar() {

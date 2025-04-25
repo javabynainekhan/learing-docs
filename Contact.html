@@ -1,97 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact | 📱</title>
     <link rel="icon" type="image/x-icon" href="./coding.png" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
-        .active {
-            width: 100%; /* Tailwind Green */
-            color: blue;
-            font-weight: bold;
-            border-radius: 12px;
-            border: 2px sold;
-            padding: 10px;
-        }
+      .active {
+        width: 100%; /* Tailwind Green */
+        color: blue;
+        font-weight: bold;
+        border-radius: 12px;
+        border: 2px sold;
+        padding: 10px;
+      }
+      .nav-item {
+        padding: 0.5rem 1rem;
+        transition: color 0.3s;
+      }
     </style>
-</head>
-<body class="min-h-screen">
-    <header class="bg-green-300 h-20 border-b border-gray-400">
-        <nav class="flex justify-between items-center p-4">
-            <a href="index.html" class="flex items-center gap-2">
-                <img src="./coding.png" alt="Coding" class="w-10 h-10">
-                <p class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent">Julkhair</p>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header
+      class="shadow-lg isolate h-16 border-b bg-transparent ring-1 ring-black/5"
+    >
+      <nav class="flex justify-between items-center p-4">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="./coding.png" alt="Coding" class="w-10 h-10" />
+          <p
+            class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent"
+          >
+            Julkhair
+          </p>
+        </a>
+
+        <!-- Mobile menu button -->
+        <div class="sm:hidden flex items-center">
+          <button id="menu-toggle" class="text-xl">☰</button>
+        </div>
+
+        <!-- Desktop Navbar -->
+        <ul class="hidden sm:flex gap-6 items-center font-medium">
+          <li>
+            <a href="index.html" class="nav-item transition hover:text-blue-500"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="About.html" class="nav-item transition hover:text-blue-500"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="Contact.html"
+              class="nav-item transition hover:text-blue-500"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="Tutorials.html"
+              class="nav-item transition hover:text-blue-500"
+              >Tutorials</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile Navbar -->
+        <ul
+          id="mobile-navbar"
+          class="sm:hidden fixed inset-0 shadow-lg bg-white bg-opacity-90 ring-1 ring-black/5 isolate p-4 flex flex-col items-center gap-2 hidden"
+        >
+          <div class="flex justify-between gap-2 w-full">
+            <a href="index.html" class="flex items-center gap-2 w-full">
+              <img src="./coding.png" alt="Coding" class="w-10 h-10" />
+              <p
+                class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent"
+              >
+                Julkhair
+              </p>
             </a>
-            
-            <!-- Mobile menu button -->
-            <div class="sm:hidden flex items-center">
-                <button id="menu-toggle" class="text-xl">
-                    ☰
-                </button>
+            <!-- Close Button -->
+            <div class="flex justify-end w-full">
+              <button id="close-btn" class="text-3xl">×</button>
             </div>
-
-            <!-- Desktop Navbar -->
-            <ul id="navbar" class="hidden sm:flex items-center gap-8 w-1/6">
-                <li><a href="index.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Home</a></li>
-                <li><a href="About.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">About</a></li>
-                <li><a href="Contact.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Contact</a></li>
-                <li><a href="Tutorials.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Tutorials</a></li>
-            </ul>
-
-            <!-- Mobile Navbar -->
-            <ul id="mobile-navbar" class="sm:hidden fixed inset-0 bg-green-300 bg-opacity-80 p-4 flex flex-col items-center gap-2 hidden">
-                <!-- Close Button -->
-                <div class="flex justify-end w-full">
-                    <button id="close-btn" class="text-3xl">×</button>
-                </div>
-                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="index.html" class="text-lg w-full block nav-item">Home</a></li>
-                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="About.html" class="text-lg w-full block nav-item">About</a></li>
-                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="Contact.html" class="text-lg w-full block nav-item">Contact</a></li>
-                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="Tutorials.html" class="text-lg w-full block nav-item">Tutorials</a></li>
-            </ul>
-        </nav>
+          </div>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="index.html" class="text-lg w-full block nav-item">Home</a>
+          </li>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="About.html" class="text-lg w-full block nav-item">About</a>
+          </li>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="Contact.html" class="text-lg w-full block nav-item"
+              >Contact</a
+            >
+          </li>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="Tutorials.html" class="text-lg w-full block nav-item"
+              >Tutorials</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
 
-    <section></section>
+    <main class="flex-grow">
+      <section
+        class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-start"
+      >
+        <!-- Contact Form -->
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h2 class="text-xl font-semibold mb-6">Send us a message</h2>
+          <form
+            class="space-y-4"
+            method="POST"
+            action="https://getform.io/f/750e2554-9ce2-4d58-aef6-0488281abda8"
+          >
+            <input
+              id="name"
+              type="text"
+              placeholder="Your Name"
+              class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+            />
+            <input
+              id="email"
+              type="email"
+              placeholder="Your Email"
+              class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+            />
+            <input
+              id="subject"
+              type="text"
+              placeholder="Subject"
+              class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+            />
+            <textarea
+              id="message"
+              rows="5"
+              placeholder="Your Message"
+              class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+            ></textarea>
+            <!-- <button
+              type="submit"
+              class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
+            >
+              Send Message
+            </button> -->
+            <div id="submitBtnWrapper"></div>
+          </form>
+        </div>
 
-    <footer>
-        <p>&copy; 2023 Code with Julkhair</p>
+        <!-- Contact Info -->
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-lg font-semibold mb-4">Contact Information</h3>
+            <ul class="space-y-4">
+              <li class="flex items-center gap-4">
+                <i class="fas fa-envelope text-blue-600"></i>
+                <a
+                  href="mailto:hello@example.com"
+                  class="text-gray-700 hover:underline"
+                  >jul.khair0786@gmail.com</a
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <i class="fas fa-phone text-green-600"></i>
+                <a href="tel:+1234567890" class="text-gray-700 hover:underline"
+                  >+91 7989267667</a
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <i class="fas fa-map-marker-alt text-red-500"></i>
+                <span>Madhapur, Hyderabad, India</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social Icons -->
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+            <div class="flex gap-4">
+              <a
+                target="_blank"
+                href="https://www.facebook.com/"
+                class="text-blue-600 text-xl hover:text-blue-800"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                target="_blank"
+                href="https://x.com/"
+                class="text-blue-400 text-xl hover:text-blue-600"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a
+                target="_blank"
+                href="https://in.linkedin.com/"
+                class="text-blue-600 text-xl hover:text-blue-800"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                target="_blank"
+                href="https://www.instagram.com/"
+                class="text-pink-600 text-xl hover:text-pink-800"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                target="_blank"
+                href="https://discord.com/"
+                class="text-blue-600 text-xl hover:text-blue-800"
+                ><i class="fab fa-discord"></i
+              ></a>
+              <a
+                target="_blank"
+                href="https://github.com/Julkhair-zlr"
+                class="text-gray-800 text-xl hover:text-black"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-lg font-semibold mb-4">Blogs</h3>
+            <div class="flex gap-4">
+              <a
+                target="_blank"
+                href="https://medium.com/@jul.khair0786"
+                class="text-xl hover:text-blue-800"
+                ><i class="fab fa-medium"></i
+              ></a>
+              <a
+                target="_blank"
+                href="https://medium.com/@julkhair"
+                class="text-xl hover:text-blue-600"
+                ><i class="fab fa-medium"></i
+              ></a>
+              <a
+                target="_blank"
+                href="https://dev.to/julkhair"
+                class="text-xl hover:text-blue-600"
+              >
+                <i class="fab fa-dev"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Optional Google Map -->
+      <!-- <section class="max-w-7xl mx-auto px-6 mb-12">
+          <iframe
+            class="w-full h-80 rounded-lg shadow-lg"
+            frameborder="0"
+            style="border:0"
+            allowfullscreen
+            src="https://www.google.com/maps/embed/v1/place?q=Googleplex&key=YOUR_API_KEY"
+          ></iframe>
+        </section> -->
+    </main>
+
+    <footer
+      class="py-6 text-center text-sm text-gray-500 border-t shadow-xl bg-transparent ring-1 ring-black/5 cursor-pointer hover:text-blue-600 font-bold"
+    >
+      © 2025 Julkhair. All rights reserved.
     </footer>
 
     <script>
-        // JavaScript for toggling mobile menu visibility
-        const menuButton = document.getElementById("menu-toggle");
-        const mobileNavbar = document.getElementById("mobile-navbar");
-        const closeButton = document.getElementById("close-btn");
+      // JavaScript for toggling mobile menu visibility
+      const menuButton = document.getElementById("menu-toggle");
+      const mobileNavbar = document.getElementById("mobile-navbar");
+      const closeButton = document.getElementById("close-btn");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const messageInput = document.getElementById("message");
+      const submitWrapper = document.getElementById("submitBtnWrapper");
 
-        // Show the mobile menu when the hamburger button is clicked
-        menuButton.addEventListener("click", () => {
-            mobileNavbar.classList.remove("hidden");
+      // Show the mobile menu when the hamburger button is clicked
+      menuButton.addEventListener("click", () => {
+        mobileNavbar.classList.remove("hidden");
+      });
+
+      // Close the mobile menu when the close button is clicked
+      closeButton.addEventListener("click", () => {
+        mobileNavbar.classList.add("hidden");
+      });
+
+      // Set active class on current page in both desktop and mobile nav
+      function setActiveNav() {
+        const navLinks = document.querySelectorAll(".nav-item");
+        const currentPage = window.location.pathname.split("/").pop(); // Get the current page name from the URL
+
+        navLinks.forEach((link) => {
+          if (link.href.includes(currentPage)) {
+            link.classList.add("active"); // Add active class to the current page
+          } else {
+            link.classList.remove("active"); // Remove active class from others
+          }
         });
+      }
 
-        // Close the mobile menu when the close button is clicked
-        closeButton.addEventListener("click", () => {
-            mobileNavbar.classList.add("hidden");
-        });
+      // Run the function to set active navigation link
+      setActiveNav();
 
-        // Set active class on current page in both desktop and mobile nav
-        function setActiveNav() {
-            const navLinks = document.querySelectorAll('.nav-item');
-            const currentPage = window.location.pathname.split('/').pop(); // Get the current page name from the URL
+      function updateSubmitButton() {
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
 
-            navLinks.forEach(link => {
-                if (link.href.includes(currentPage)) {
-                    link.classList.add('active'); // Add active class to the current page
-                } else {
-                    link.classList.remove('active'); // Remove active class from others
-                }
-            });
+        if (name.length > 0 && email.length > 0 && message.length > 0) {
+          submitWrapper.innerHTML = `
+        <button type="submit"
+          class="bg-blue-600 text-white font-bold px-6 py-3 hover:bg-blue-700 transition group border-2 rounded-full mx-auto flex items-center">
+          Let's Collaborate
+        </button>
+      `;
+        } else {
+          submitWrapper.innerHTML = "";
         }
+      }
 
-        // Run the function to set active navigation link
-        setActiveNav();
+      nameInput.addEventListener("input", updateSubmitButton);
+      emailInput.addEventListener("input", updateSubmitButton);
+      messageInput.addEventListener("input", updateSubmitButton);
     </script>
-</body>
+  </body>
 </html>

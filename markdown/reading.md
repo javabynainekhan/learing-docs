@@ -102,7 +102,7 @@ const [count, setCount] = useState(0);
 
 Example:
 ```jsx
-const [name, setName] = useState('John');
+const [name, setName] = useState('Julkhair');
 ```
 
 ---
@@ -116,7 +116,7 @@ or
 
 Example:
 ```jsx
-<Greeting name="Alice" />
+<Greeting name="Julkhair" />
 ```
 
 ---

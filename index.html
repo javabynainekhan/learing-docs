@@ -6,6 +6,14 @@
     <title>Code with Julkhair | 👋</title>
     <link rel="icon" type="image/x-icon" href="./coding.png" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
       .active {
         width: 100%; /* Tailwind Green */
@@ -15,10 +23,84 @@
         border: 2px sold;
         padding: 10px;
       }
+      .nav-item {
+        padding: 0.5rem 1rem;
+        transition: color 0.3s;
+      }
+      /* 3js animation */
+      /* Ensuring the hero section takes full viewport height */
+      .hero-content {
+    position: relative;
+    width: 50%;
+    padding: 2rem;
+    z-index: 10;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content p {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-content button {
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #f97316;
+    color: white;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .hero-content button:hover {
+    background-color: #fb923c;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .floating-image {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .hero-image {
+    width: 90%;
+    position: relative;
+    z-index: 10;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
     </style>
   </head>
-  <body class="min-h-screen">
-    <header class="bg-green-300 h-20 border-b border-gray-400">
+  <body class="min-h-screen flex flex-col">
+    <header
+      class="shadow-lg isolate h-16 border-b bg-transparent ring-1 ring-black/5"
+    >
       <nav class="flex justify-between items-center p-4">
         <a href="index.html" class="flex items-center gap-2">
           <img src="./coding.png" alt="Coding" class="w-10 h-10" />
@@ -35,32 +117,28 @@
         </div>
 
         <!-- Desktop Navbar -->
-        <ul id="navbar" class="hidden sm:flex items-center gap-8 w-1/6">
+        <ul class="hidden sm:flex gap-6 items-center font-medium">
           <li>
-            <a
-              href="index.html"
-              class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]"
+            <a href="index.html" class="nav-item transition hover:text-blue-500"
               >Home</a
             >
           </li>
           <li>
-            <a
-              href="About.html"
-              class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]"
+            <a href="About.html" class="nav-item transition hover:text-blue-500"
               >About</a
             >
           </li>
           <li>
             <a
               href="Contact.html"
-              class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]"
+              class="nav-item transition hover:text-blue-500"
               >Contact</a
             >
           </li>
           <li>
             <a
               href="Tutorials.html"
-              class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]"
+              class="nav-item transition hover:text-blue-500"
               >Tutorials</a
             >
           </li>
@@ -69,31 +147,41 @@
         <!-- Mobile Navbar -->
         <ul
           id="mobile-navbar"
-          class="sm:hidden fixed inset-0 bg-green-300 bg-opacity-80 p-4 flex flex-col items-center gap-2 hidden"
+          class="sm:hidden fixed inset-0 shadow-lg bg-white bg-opacity-90 ring-1 ring-black/5 isolate p-4 flex flex-col items-center gap-2 hidden"
         >
-          <!-- Close Button -->
-          <div class="flex justify-end w-full">
-            <button id="close-btn" class="text-3xl">×</button>
+          <div class="flex justify-between gap-2 w-full">
+            <a href="index.html" class="flex items-center gap-2 w-full">
+              <img src="./coding.png" alt="Coding" class="w-10 h-10" />
+              <p
+                class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent"
+              >
+                Julkhair
+              </p>
+            </a>
+            <!-- Close Button -->
+            <div class="flex justify-end w-full">
+              <button id="close-btn" class="text-3xl">×</button>
+            </div>
           </div>
           <li
-            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
           >
             <a href="index.html" class="text-lg w-full block nav-item">Home</a>
           </li>
           <li
-            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
           >
             <a href="About.html" class="text-lg w-full block nav-item">About</a>
           </li>
           <li
-            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
           >
             <a href="Contact.html" class="text-lg w-full block nav-item"
               >Contact</a
             >
           </li>
           <li
-            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
           >
             <a href="Tutorials.html" class="text-lg w-full block nav-item"
               >Tutorials</a
@@ -103,11 +191,85 @@
       </nav>
     </header>
 
-    <section></section>
+    <main class="flex-grow">
+      <!-- Your actual page content goes here -->
+      <section class="hero-section">
+        <!-- Left Side: Text Content -->
+        <div class="hero-content">
+          <h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight">
+            Hey, I'm Julkhair! Welcome to My Portfolio 🚀
+          </h1>
+          <p class="mt-6 text-lg lg:text-xl text-gray-300">
+            I am a Front-End Developer with 3 years of experience. I specialize in creating beautiful, user-friendly websites using React.js, Next.js, and Tailwind CSS.
+          </p>
+          <p class="mt-4 text-lg lg:text-xl text-gray-300">
+            I love building fast and interactive web apps. I focus on the front-end and enjoy using React.js in the MERN stack.
+          </p>
+          <p class="mt-4 text-lg lg:text-xl text-gray-300">
+            My expertise includes Next.js 14 for fast, scalable applications.
+          </p>
+          <button onclick="window.location.href='#contact'" class="mt-8 bg-orange-500 text-white font-semibold py-2 px-6 rounded-md shadow-md hover:bg-orange-400 transition-colors">
+            Let’s Connect!
+          </button>
+        </div>
+      
+        <!-- Right Side: Animated Image -->
+        
+      
+        <!-- 3D Particles Background with Three.js -->
+        <div class="background"></div>
+      </section>
+    </main>
 
-    <footer>
-      <p>&copy; 2023 Code with Julkhair</p>
+    <footer class="bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white py-4 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center flex-wrap gap-12 z-10 relative">
+        
+        <!-- Brand / Motto -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="./coding.png" alt="Logo" class="w-12 h-12 rounded-full shadow-lg" />
+            <h2 class="text-2xl font-bold text-pink-400 tracking-wider">
+              Code with Julkhair
+            </h2>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+            Coding the future, one line at a time. Connect. Learn. Build. 🌐✨
+          </p>
+        </div>
+    
+        <!-- Social Media -->
+        <div class="flex flex-col gap-6">
+          <h3 class="text-lg font-semibold text-blue-300">Let’s Connect</h3>
+          <div class="flex gap-6 text-2xl">
+            <a href="https://github.com/Julkhair-zlr" target="_blank" class="hover:text-gray-300 transition duration-300">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="hover:text-blue-400 transition duration-300">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://x.com/yourprofile" target="_blank" class="hover:text-blue-500 transition duration-300">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://instagram.com/yourprofile" target="_blank" class="hover:text-pink-500 transition duration-300">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://discord.com" target="_blank" class="hover:text-indigo-400 transition duration-300">
+              <i class="fab fa-discord"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Glowing Floating Circles -->
+      <div class="absolute top-0 left-0 w-80 h-80 bg-pink-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+      <div class="absolute bottom-0 right-0 w-60 h-60 bg-blue-500 rounded-full blur-2xl opacity-20 animate-ping"></div>
+    
+      <!-- Footer Bottom -->
+      <div class="text-center mt-12 border-t border-gray-700 pt-6 text-sm text-gray-500 z-10 relative">
+        &copy; 2025 <span class="text-pink-400 font-semibold">Julkhair</span>. Crafted with ❤️ and coffee.
+      </div>
     </footer>
+        
 
     <script>
       // JavaScript for toggling mobile menu visibility
@@ -142,5 +304,86 @@
       // Run the function to set active navigation link
       setActiveNav();
     </script>
+   <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.querySelector('.background').appendChild(renderer.domElement);
+  
+    const particleCount = 5000; // Increased particle count for a larger galaxy
+    const particlesGeometry = new THREE.BufferGeometry();
+    const positions = [];
+    const sizes = [];
+  
+    // Load the star texture
+    const textureLoader = new THREE.TextureLoader();
+    const starTexture = textureLoader.load('star.png'); // Path to your star texture
+  
+    // Create particles in a swirling pattern to simulate galaxy
+    for (let i = 0; i < particleCount; i++) {
+      let angle = Math.random() * 10 * Math.PI;
+      let distance = Math.random() * 30;
+      let x = Math.cos(angle) * distance;
+      let y = Math.sin(angle) * distance;
+      let z = (Math.random() - 0.5) * 10;
+  
+      positions.push(x, y, z);
+      sizes.push(Math.random() * 0.5 + 0.5); // Random size for the star
+    }
+  
+    particlesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    particlesGeometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
+  
+    // Use sprite material with the star texture
+    const particlesMaterial = new THREE.SpriteMaterial({
+      map: starTexture,
+      transparent: true,
+      opacity: 0.7,
+    });
+  
+    // Create the particles using SpriteMaterial
+    const particles = new THREE.Group();
+  
+    for (let i = 0; i < particleCount; i++) {
+      const particle = new THREE.Sprite(particlesMaterial);
+      const x = positions[i * 3];
+      const y = positions[i * 3 + 1];
+      const z = positions[i * 3 + 2];
+      particle.position.set(x, y, z);
+      particle.scale.set(sizes[i], sizes[i], 1);
+      particles.add(particle);
+    }
+  
+    scene.add(particles);
+  
+    camera.position.z = 30;
+  
+    let mouseX = 0, mouseY = 0;
+  
+    // Mouse interaction to change the direction of the stars
+    window.addEventListener('mousemove', (event) => {
+      mouseX = (event.clientX / window.innerWidth) * 2 - 1; // Normalize to [-1, 1]
+      mouseY = -(event.clientY / window.innerHeight) * 2 + 1; // Normalize to [-1, 1]
+    });
+  
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      // Adjust the rotation and direction of particles based on mouse movement
+      particles.rotation.x += 0.0005 + mouseY * 0.01;
+      particles.rotation.y += 0.001 + mouseX * 0.01;
+      
+      renderer.render(scene, camera);
+    }
+  
+    animate();
+  
+    window.addEventListener("resize", () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  </script>
   </body>
 </html>

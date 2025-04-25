@@ -1,97 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> About | 🙍‍♂️</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | 🙍‍♂️</title>
     <link rel="icon" type="image/x-icon" href="./coding.png" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
-        .active {
-            width: 100%; /* Tailwind Green */
-            color: blue;
-            font-weight: bold;
-            border-radius: 12px;
-            border: 2px sold;
-            padding: 10px;
-        }
+      .active {
+        width: 100%; /* Tailwind Green */
+        color: blue;
+        font-weight: bold;
+        border-radius: 12px;
+        border: 2px sold;
+        padding: 10px;
+      }
+      .nav-item {
+        padding: 0.5rem 1rem;
+        transition: color 0.3s;
+      }
     </style>
-</head>
-<body class="min-h-screen">
-    <header class="bg-green-300 h-20 border-b border-gray-400">
-        <nav class="flex justify-between items-center p-4">
-            <a href="index.html" class="flex items-center gap-2">
-                <img src="./coding.png" alt="Coding" class="w-10 h-10">
-                <p class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent">Julkhair</p>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header
+      class="shadow-lg isolate h-16 border-b bg-transparent ring-1 ring-black/5"
+    >
+      <nav class="flex justify-between items-center p-4">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="./coding.png" alt="Coding" class="w-10 h-10" />
+          <p
+            class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent"
+          >
+            Julkhair
+          </p>
+        </a>
+
+        <!-- Mobile menu button -->
+        <div class="sm:hidden flex items-center">
+          <button id="menu-toggle" class="text-xl">☰</button>
+        </div>
+
+        <!-- Desktop Navbar -->
+        <ul class="hidden sm:flex gap-6 items-center font-medium">
+          <li>
+            <a href="index.html" class="nav-item transition hover:text-blue-500"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="About.html" class="nav-item transition hover:text-blue-500"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="Contact.html"
+              class="nav-item transition hover:text-blue-500"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="Tutorials.html"
+              class="nav-item transition hover:text-blue-500"
+              >Tutorials</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile Navbar -->
+        <ul
+          id="mobile-navbar"
+          class="sm:hidden fixed inset-0 shadow-lg bg-white bg-opacity-90 ring-1 ring-black/5 isolate p-4 flex flex-col items-center gap-2 hidden"
+        >
+          <div class="flex justify-between gap-2 w-full">
+            <a href="index.html" class="flex items-center gap-2 w-full">
+              <img src="./coding.png" alt="Coding" class="w-10 h-10" />
+              <p
+                class="text-2xl font-bold bg-gradient-to-b from-red-400 to-blue-500 bg-clip-text text-transparent"
+              >
+                Julkhair
+              </p>
             </a>
-            
-            <!-- Mobile menu button -->
-            <div class="sm:hidden flex items-center">
-                <button id="menu-toggle" class="text-xl">
-                    ☰
-                </button>
+            <!-- Close Button -->
+            <div class="flex justify-end w-full">
+              <button id="close-btn" class="text-3xl">×</button>
             </div>
-
-            <!-- Desktop Navbar -->
-            <ul id="navbar" class="hidden sm:flex items-center gap-8 w-1/6">
-                <li><a href="index.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Home</a></li>
-                <li><a href="About.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">About</a></li>
-                <li><a href="Contact.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Contact</a></li>
-                <li><a href="Tutorials.html" class="p-3 nav-item hover:text-white hover:font-bold transform-3d whitespace-nowrap transition-colors duration-200 block w-[2.5rem]">Tutorials</a></li>
-            </ul>
-
-            <!-- Mobile Navbar -->
-            <ul id="mobile-navbar" class="sm:hidden fixed inset-0 bg-green-300 bg-opacity-80 p-4 flex flex-col items-center gap-2 hidden">
-                <!-- Close Button -->
-                <div class="flex justify-end w-full">
-                    <button id="close-btn" class="text-3xl">×</button>
-                </div>
-                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="index.html" class="text-lg w-full block nav-item">Home</a></li>
-                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="About.html" class="text-lg w-full block nav-item">About</a></li>
-                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="Contact.html" class="text-lg w-full block nav-item">Contact</a></li>
-                <li class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-white hover:font-bold"><a href="Tutorials.html" class="text-lg w-full block nav-item">Tutorials</a></li>
-            </ul>
-        </nav>
+          </div>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="index.html" class="text-lg w-full block nav-item">Home</a>
+          </li>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="About.html" class="text-lg w-full block nav-item">About</a>
+          </li>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="Contact.html" class="text-lg w-full block nav-item"
+              >Contact</a
+            >
+          </li>
+          <li
+            class="w-full p-3 rounded-xl hover:bg-green-400 hover:text-blue-600 hover:font-bold"
+          >
+            <a href="Tutorials.html" class="text-lg w-full block nav-item"
+              >Tutorials</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
 
-    <section></section>
+    <main class="flex-grow">
+      <!-- Your actual page content goes here -->
+      <section class="p-6 text-center container mx-auto">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+          <h1 class="text-4xl font-bold mb-4">About Us</h1>
+          <p class="text-lg">
+            Welcome to our website! We are a team of passionate developers who
+            are dedicated to providing you with the best coding resources and
+            tutorials. Whether you are a beginner or an experienced developer,
+            we have everything you need to succeed in your coding journey.
+          </p>
+          <p class="text-lg">
+            Our team is made up of experienced developers who are passionate
+            about coding and love to share their knowledge with others. We
+            believe in creating a community of like-minded individuals who can
+            help each other grow and learn.
+          </p>
+          <p class="text-lg">
+            We are constantly updating our website with new coding resources and
+            tutorials, so be sure to check back often to stay up to date with
+            the latest news and trends in coding.
+          </p>
+          <p class="text-lg">
+            Thank you for visiting our website and we hope you find it helpful
+            in your coding journey!
+          </p>
+          <p class="text-lg">
+            If you have any questions or feedback, please don't hesitate to
+            contact us.
+          </p>
+          <p class="text-lg">
+            Thank you for visiting our website and we hope you find it helpful
+            in your coding journey!
+          </p>
+        </div>
+      </section>
+    </main>
 
-    <footer>
-        <p>&copy; 2023 Code with Julkhair</p>
+    <!-- <footer class="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white py-10">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-start">
+          
+          Creative Quote or Motto
+          <div>
+            <h2 class="text-2xl font-bold mb-4">Stay Curious.</h2>
+            <p class="text-gray-400 leading-relaxed">
+              "The journey of a thousand bugs begins with a single commit."
+            </p>
+            <p class="mt-4 text-sm text-gray-500 italic">— Julkhair</p>
+          </div>
+    
+          Studio Vibes / What's New
+          <div>
+            <h2 class="text-xl font-semibold mb-4">Behind the Code</h2>
+            <p class="text-gray-400 mb-3">
+              Working on a new open-source dashboard theme — stay tuned!
+            </p>
+            <p class="text-gray-500 text-sm">
+              Want a sneak peek? <a href="mailto:jul.khair0786@gmail.com" class="underline hover:text-blue-400">Email me</a>.
+            </p>
+          </div>
+    
+          Social & Contact Buttons
+          <div>
+            <h2 class="text-xl font-semibold mb-4">Connect</h2>
+            <div class="flex flex-wrap gap-4">
+              <a href="https://github.com/" target="_blank" class="hover:scale-105 transition transform duration-300 bg-white text-black w-10 h-10 flex justify-center items-center rounded-full">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://linkedin.com/" target="_blank" class="hover:scale-105 transition transform duration-300 bg-white text-blue-700 w-10 h-10 flex justify-center items-center rounded-full">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://x.com/" target="_blank" class="hover:scale-105 transition transform duration-300 bg-white text-black w-10 h-10 flex justify-center items-center rounded-full">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="mailto:julkhair@example.com" class="hover:scale-105 transition transform duration-300 bg-white text-blue-600 w-10 h-10 flex justify-center items-center rounded-full">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+              <a href="tel:+123456789" class="hover:scale-105 transition transform duration-300 bg-white text-green-600 w-10 h-10 flex justify-center items-center rounded-full">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            </div>
+          </div>
+    
+        </div>
+    
+        Footer Bottom
+        <div class="mt-12 text-center border-t border-gray-700 pt-6 text-sm text-gray-400">
+          <p>&copy; 2025 <span class="text-white font-semibold">Julkhair's Lab</span>. Built with passion & ☕.</p>
+        </div>
+      </div>
+    </footer> -->
+    
+    <footer class="bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white py-4 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center flex-wrap gap-12 z-10 relative">
+        
+        <!-- Brand / Motto -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="./coding.png" alt="Logo" class="w-12 h-12 rounded-full shadow-lg" />
+            <h2 class="text-2xl font-bold text-pink-400 tracking-wider">
+              Code with Julkhair
+            </h2>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+            Coding the future, one line at a time. Connect. Learn. Build. 🌐✨
+          </p>
+        </div>
+    
+        <!-- Social Media -->
+        <div class="flex flex-col gap-6">
+          <h3 class="text-lg font-semibold text-blue-300">Let’s Connect</h3>
+          <div class="flex gap-6 text-2xl">
+            <a href="https://github.com/Julkhair-zlr" target="_blank" class="hover:text-gray-300 transition duration-300">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="hover:text-blue-400 transition duration-300">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://x.com/yourprofile" target="_blank" class="hover:text-blue-500 transition duration-300">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://instagram.com/yourprofile" target="_blank" class="hover:text-pink-500 transition duration-300">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://discord.com" target="_blank" class="hover:text-indigo-400 transition duration-300">
+              <i class="fab fa-discord"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Glowing Floating Circles -->
+      <div class="absolute top-0 left-0 w-80 h-80 bg-pink-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+      <div class="absolute bottom-0 right-0 w-60 h-60 bg-blue-500 rounded-full blur-2xl opacity-20 animate-ping"></div>
+    
+      <!-- Footer Bottom -->
+      <div class="text-center mt-12 border-t border-gray-700 pt-6 text-sm text-gray-500 z-10 relative">
+        &copy; 2025 <span class="text-pink-400 font-semibold">Julkhair</span>. Crafted with ❤️ and coffee.
+      </div>
     </footer>
-
     <script>
-        // JavaScript for toggling mobile menu visibility
-        const menuButton = document.getElementById("menu-toggle");
-        const mobileNavbar = document.getElementById("mobile-navbar");
-        const closeButton = document.getElementById("close-btn");
+      // JavaScript for toggling mobile menu visibility
+      const menuButton = document.getElementById("menu-toggle");
+      const mobileNavbar = document.getElementById("mobile-navbar");
+      const closeButton = document.getElementById("close-btn");
 
-        // Show the mobile menu when the hamburger button is clicked
-        menuButton.addEventListener("click", () => {
-            mobileNavbar.classList.remove("hidden");
+      // Show the mobile menu when the hamburger button is clicked
+      menuButton.addEventListener("click", () => {
+        mobileNavbar.classList.remove("hidden");
+      });
+
+      // Close the mobile menu when the close button is clicked
+      closeButton.addEventListener("click", () => {
+        mobileNavbar.classList.add("hidden");
+      });
+
+      // Set active class on current page in both desktop and mobile nav
+      function setActiveNav() {
+        const navLinks = document.querySelectorAll(".nav-item");
+        const currentPage = window.location.pathname.split("/").pop(); // Get the current page name from the URL
+
+        navLinks.forEach((link) => {
+          if (link.href.includes(currentPage)) {
+            link.classList.add("active"); // Add active class to the current page
+          } else {
+            link.classList.remove("active"); // Remove active class from others
+          }
         });
+      }
 
-        // Close the mobile menu when the close button is clicked
-        closeButton.addEventListener("click", () => {
-            mobileNavbar.classList.add("hidden");
-        });
-
-        // Set active class on current page in both desktop and mobile nav
-        function setActiveNav() {
-            const navLinks = document.querySelectorAll('.nav-item');
-            const currentPage = window.location.pathname.split('/').pop(); // Get the current page name from the URL
-
-            navLinks.forEach(link => {
-                if (link.href.includes(currentPage)) {
-                    link.classList.add('active'); // Add active class to the current page
-                } else {
-                    link.classList.remove('active'); // Remove active class from others
-                }
-            });
-        }
-
-        // Run the function to set active navigation link
-        setActiveNav();
+      // Run the function to set active navigation link
+      setActiveNav();
     </script>
-</body>
+  </body>
 </html>
